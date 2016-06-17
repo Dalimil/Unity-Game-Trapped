@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour {
 
-	public bool isBubble;
+	public bool isPlayerOne;
+	public bool hasBubble;
 	public bool hasGun;
 	public int startingHealth = 100;                            // The amount of health the player starts the game with.
 	public int currentHealth;                                   // The current health the player has.

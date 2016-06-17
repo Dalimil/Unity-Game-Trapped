@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 	Vector3 movement;                   // The vector to store the direction of the player's movement.
 	Animator anim;                      // Reference to the animator component.
 	Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
-
+	PlayerStats playerStats;
 	int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
@@ -20,13 +20,42 @@ public class PlayerMovement : MonoBehaviour {
 		// Set up references.
 		anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
+		playerStats = GetComponent<PlayerStats> ();
 	}
 
 	void FixedUpdate ()
 	{
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+		float moveHorizontal = 0f;
+		float moveVertical = 0f;
 
+		if (playerStats.isPlayerOne) {
+			if (Input.GetKey (KeyCode.W)) {
+				moveVertical += 1f;
+			}
+			if (Input.GetKey (KeyCode.A)) {
+				moveHorizontal -= 1f;
+			}      
+			if (Input.GetKey (KeyCode.S)) {      
+				moveVertical -= 1f;
+			}
+			if (Input.GetKey (KeyCode.D)) {     
+				moveHorizontal += 1f;
+			}
+		} else {
+			if (Input.GetKey (KeyCode.UpArrow)) {
+				moveVertical += 1f;
+			}
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				moveHorizontal -= 1f;
+			}      
+			if (Input.GetKey (KeyCode.DownArrow)) {      
+				moveVertical -= 1f;
+			}
+			if (Input.GetKey (KeyCode.RightArrow)) {     
+				moveHorizontal += 1f;
+			}
+		}
+			
 		// Move the player around the scene.
 		Move (moveHorizontal, moveVertical);
 

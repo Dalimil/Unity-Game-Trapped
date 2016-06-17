@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class EnemyAttack : MonoBehaviour {
-	
+
+	public int attackDamage = 10;               // The amount of health taken away per attack.
+
 	Animator anim;                              // Reference to the animator component.
 	GameObject player;                          // Reference to the player GameObject.
 	PlayerStats playerHealth;                  // Reference to the player's health.
