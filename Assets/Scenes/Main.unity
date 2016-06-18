@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 2023876516}
   enemy: {fileID: 153412, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
   spawnTime: 15
   spawnPoints:
@@ -136,7 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 2023876516}
   enemy: {fileID: 100000, guid: ffdde77c7de2ec246907b187471ed7d0, type: 2}
   spawnTime: 3
   spawnPoints:
@@ -152,7 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf862ffeb7e74943a1729f1cff11eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 2023876516}
   enemy: {fileID: 100002, guid: 945f463f385254027ac88da9310d9f13, type: 2}
   spawnTime: 3
   spawnPoints:
@@ -2464,7 +2461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2268f9c7df8764aa2e92dbf55b5ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
 --- !u!54 &931736811
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4028,7 +4024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2268f9c7df8764aa2e92dbf55b5ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
 --- !u!54 &1822643780
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4060,6 +4055,7 @@ MonoBehaviour:
   isPlayerOne: 0
   hasBubble: 1
   hasGun: 0
+  speed: 5
   startingShield: 600
   currentShield: 0
   startingHealth: 100
@@ -6867,6 +6863,7 @@ MonoBehaviour:
   isPlayerOne: 1
   hasBubble: 0
   hasGun: 1
+  speed: 5
   startingShield: 600
   currentShield: 0
   startingHealth: 100

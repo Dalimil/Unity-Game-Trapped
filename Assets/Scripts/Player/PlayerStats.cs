@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour {
 	public bool isPlayerOne;
 	public bool hasBubble;
 	public bool hasGun;
+	public float speed = 5f;   // The speed that the player will move at.
 	public int startingShield = 600;
 	public int currentShield;
 	public int startingHealth = 100;                            // The amount of health the player starts the game with.

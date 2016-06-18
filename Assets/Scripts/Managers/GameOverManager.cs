@@ -67,8 +67,8 @@ public class GameOverManager : MonoBehaviour
 	private float timeToPass = 0f;
 	void FixedUpdate ()
 	{
+		timeToPass -= Time.deltaTime;
 		if (Input.GetKey (KeyCode.Space) && player1Alive && player2Alive) {
-			timeToPass -= Time.deltaTime;
 			if (timeToPass <= 0f) {
 				timeToPass = 2f;
 				SwitchPlayers ();
@@ -86,6 +86,9 @@ public class GameOverManager : MonoBehaviour
 		player1Stats.currentShield = player2Stats.currentShield;
 		player2Stats.currentShield = t;
 
+		float tt = player1Stats.speed;
+		player1Stats.speed = player2Stats.speed;
+		player2Stats.speed = tt;
 
 		SwitchWeapons (player1Stats.hasGun);
 
