@@ -24,6 +24,7 @@ public class PlayerStats : MonoBehaviour {
 	PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
 	bool isDead;                                                // Whether the player is dead.
 	bool damaged;                                               // True when the player gets damaged.
+	GameOverManager gameManager;
 
 	void Awake ()
 	{
@@ -32,6 +33,7 @@ public class PlayerStats : MonoBehaviour {
 		playerAudio = GetComponent <AudioSource> ();
 		playerMovement = GetComponent <PlayerMovement> ();
 		playerShooting = GetComponentInChildren <PlayerShooting> ();
+		gameManager = GetComponent<GameOverManager> ();
 
 		// Set the initial health of the player.
 		currentHealth = startingHealth;
@@ -78,6 +80,8 @@ public class PlayerStats : MonoBehaviour {
 
 			if(currentShield <= 0) {
 				// Remove bubble object
+				gameManager.removeBubble(isPlayerOne);
+				hasBubble = false;
 			}
 		} else {
 			currentHealth -= amount;
