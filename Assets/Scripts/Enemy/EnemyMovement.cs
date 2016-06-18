@@ -45,11 +45,6 @@ public class EnemyMovement : MonoBehaviour
 			} else {
 				nav.SetDestination (player2.position);
 			}
-        // Otherwise...
-		} else
-        {
-            // ... disable the nav mesh agent.
-            nav.enabled = false;
-        }
+		} 
     }
 }
