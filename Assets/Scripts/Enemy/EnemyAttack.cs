@@ -88,8 +88,12 @@ public class EnemyAttack : MonoBehaviour
         // If the player has health to lose...
         if(playerHealth.currentHealth > 0)
         {
+			if (playerHealth.hasBubble && playerHealth.currentShield > 0) {
+				enemyHealth.TakeShieldDamage ();
+			}
             // ... damage the player.
             playerHealth.TakeDamage (attackDamage);
+
         }
     }
 }

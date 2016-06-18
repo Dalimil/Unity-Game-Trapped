@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour {
 	public int startingShield = 600;
 	public int currentShield;
 	public int startingHealth = 100;                            // The amount of health the player starts the game with.
-	public int currentHealth;                                   // The current health the player has.
+	public int currentHealth = 100;                                   // The current health the player has.
 	public Slider healthSlider;                                 // Reference to the UI's health bar.
 	public Image damageImage;                                   // Reference to an image to flash on the screen on being hurt.
 	public AudioClip deathClip;                                 // The audio clip to play when the player dies.
@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour {
 	PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
 	bool isDead;                                                // Whether the player is dead.
 	bool damaged;                                               // True when the player gets damaged.
-	GameOverManager gameManager;
+	GameObject bubble;
 
 	void Awake ()
 	{
@@ -33,12 +33,16 @@ public class PlayerStats : MonoBehaviour {
 		playerAudio = GetComponent <AudioSource> ();
 		playerMovement = GetComponent <PlayerMovement> ();
 		playerShooting = GetComponentInChildren <PlayerShooting> ();
-		gameManager = GetComponent<GameOverManager> ();
 
 		// Set the initial health of the player.
 		currentHealth = startingHealth;
 		if (hasBubble) {
 			currentShield = startingShield;
+			if (isPlayerOne) {
+				bubble = GameObject.FindGameObjectWithTag ("Shield_1");
+			} else {
+				bubble = GameObject.FindGameObjectWithTag ("Shield_2");
+			}
 		} else {
 			currentShield = 0;
 		}
@@ -76,11 +80,11 @@ public class PlayerStats : MonoBehaviour {
 			currentShield -= amount;
 
 			// Set the health bar's value to the current health.
-			healthSlider.value = currentShield;
+			healthSlider.value = currentShield * 100.0f / startingShield;
 
 			if(currentShield <= 0) {
 				// Remove bubble object
-				gameManager.removeBubble(isPlayerOne);
+				bubble.SetActive(false);
 				hasBubble = false;
 			}
 		} else {

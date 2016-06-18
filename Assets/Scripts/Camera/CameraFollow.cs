@@ -121,9 +121,7 @@ public class CameraFollow : MonoBehaviour
 
     public float smoothing = 5f;        // The speed with which the camera will be following.
 
-
     Vector3 offset;                     // The initial offset from the target.
-
 
     void Start ()
     {
@@ -135,7 +133,14 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate ()
     {
         // Create a postion the camera is aiming for based on the offset from the target.
-		Vector3 targetCamPos = (player1.position + player2.position)/2 + offset;
+		Vector3 targetCamPos = offset;
+		if (GameOverManager.player1Alive && GameOverManager.player2Alive) {
+			targetCamPos += (player1.position + player2.position) / 2;
+		} else if (GameOverManager.player1Alive) {
+			targetCamPos += player1.position;
+		} else {
+			targetCamPos += player2.position;
+		}
 
 		targetCamPos.y = transform.position.y;
 
