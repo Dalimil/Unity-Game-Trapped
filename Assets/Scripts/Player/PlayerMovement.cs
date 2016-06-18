@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour {
 		anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
 		playerStats = GetComponent<PlayerStats> ();
+
+		if (playerStats.hasBubble) {
+			speed *= 1.2f;
+		}
 	}
 
 	void FixedUpdate ()

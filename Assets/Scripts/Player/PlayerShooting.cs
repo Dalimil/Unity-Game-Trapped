@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerShooting : MonoBehaviour {
 
-	public int damagePerShot = 20;                  // The damage inflicted by each bullet.
+	public int damagePerShot = 100;                  // The damage inflicted by each bullet.
 	public float timeBetweenBullets = 0.15f;        // The time between each shot.
 	public float range = 100f;                      // The distance the gun can fire.
 

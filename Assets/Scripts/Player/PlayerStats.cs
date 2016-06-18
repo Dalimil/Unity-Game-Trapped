@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour {
 	public bool isPlayerOne;
 	public bool hasBubble;
 	public bool hasGun;
+	public int startingShield = 600;
+	public int currentShield;
 	public int startingHealth = 100;                            // The amount of health the player starts the game with.
 	public int currentHealth;                                   // The current health the player has.
 	public Slider healthSlider;                                 // Reference to the UI's health bar.
@@ -33,6 +35,11 @@ public class PlayerStats : MonoBehaviour {
 
 		// Set the initial health of the player.
 		currentHealth = startingHealth;
+		if (hasBubble) {
+			currentShield = startingShield;
+		} else {
+			currentShield = 0;
+		}
 	}
 
 
@@ -62,10 +69,19 @@ public class PlayerStats : MonoBehaviour {
 		damaged = true;
 
 		// Reduce the current health by the damage amount.
-		currentHealth -= amount;
 
-		// Set the health bar's value to the current health.
-		healthSlider.value = currentHealth;
+		if (hasBubble && currentShield > 0) {
+			currentShield -= amount;
+
+			// Set the health bar's value to the current health.
+			healthSlider.value = currentShield;
+
+			if(currentShield <= 0) {
+				// Remove bubble object
+			}
+		} else {
+			currentHealth -= amount;
+		}
 
 		// Play the hurt sound effect.
 		playerAudio.Play ();
@@ -85,7 +101,7 @@ public class PlayerStats : MonoBehaviour {
 		isDead = true;
 
 		// Turn off any remaining shooting effects.
-		playerShooting.DisableEffects ();
+		if(hasGun) playerShooting.DisableEffects ();
 
 		// Tell the animator that the player is dead.
 		anim.SetTrigger ("Die");
@@ -96,7 +112,7 @@ public class PlayerStats : MonoBehaviour {
 
 		// Turn off the movement and shooting scripts.
 		playerMovement.enabled = false;
-		playerShooting.enabled = false;
+		if(hasGun) playerShooting.enabled = false;
 	}
 
 

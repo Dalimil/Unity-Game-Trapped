@@ -4,22 +4,27 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
-    public int attackDamage = 10;               // The amount of health taken away per attack.
+    public int attackDamage = 100;               // The amount of health taken away per attack.
 
 
     Animator anim;                              // Reference to the animator component.
-    GameObject player;                          // Reference to the player GameObject.
-	PlayerStats playerHealth;                  // Reference to the player's health.
+    GameObject player1;                          // Reference to the player GameObject.
+	PlayerStats player1Health;                  // Reference to the player's health.
+	GameObject player2;                          // Reference to the player GameObject.
+	PlayerStats player2Health;                  // Reference to the player's health.
     EnemyHealth enemyHealth;                    // Reference to this enemy's health.
-    bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
-    float timer;                                // Timer for counting up to the next attack.
+    bool player1InRange;                         // Whether player is within the trigger collider and can be attacked.
+	bool player2InRange;                         // Whether player is within the trigger collider and can be attacked.
+	float timer;                                // Timer for counting up to the next attack.
 
 
     void Awake ()
     {
         // Setting up the references.
-        player = GameObject.FindGameObjectWithTag ("Player");
-		playerHealth = player.GetComponent <PlayerStats> ();
+        player1 = GameObject.FindGameObjectWithTag ("Player");
+		player2 = GameObject.FindGameObjectWithTag ("Player_2");
+		player1Health = player1.GetComponent <PlayerStats> ();
+		player2Health = player2.GetComponent <PlayerStats> ();
         enemyHealth = GetComponent<EnemyHealth>();
         anim = GetComponent <Animator> ();
     }
@@ -28,22 +33,24 @@ public class EnemyAttack : MonoBehaviour
     void OnTriggerEnter (Collider other)
     {
         // If the entering collider is the player...
-        if(other.gameObject == player)
-        {
-            // ... the player is in range.
-            playerInRange = true;
-        }
+		if (other.gameObject == player1) {
+			// ... the player is in range.
+			player1InRange = true;
+		} else if (other.gameObject == player2) {
+			player2InRange = true;
+		}
     }
 
 
     void OnTriggerExit (Collider other)
     {
         // If the exiting collider is the player...
-        if(other.gameObject == player)
-        {
-            // ... the player is no longer in range.
-            playerInRange = false;
-        }
+		if (other.gameObject == player1) {
+			// ... the player is no longer in range.
+			player1InRange = false;
+		} else if (other.gameObject == player2) {
+			player2InRange = false;
+		}
     }
 
 
@@ -53,14 +60,19 @@ public class EnemyAttack : MonoBehaviour
         timer += Time.deltaTime;
 
         // If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        if(timer >= timeBetweenAttacks && enemyHealth.currentHealth > 0)
         {
-            // ... attack.
-            Attack ();
-        }
+			if (player1InRange) {
+				
+				// ... attack.
+				Attack (player1Health);
+			} else if (player2InRange) {
+				Attack (player2Health);
+			}
+		}
 
         // If the player has zero or less health...
-        if(playerHealth.currentHealth <= 0)
+		if(player1Health.currentHealth <= 0 || player2Health.currentHealth <= 0)
         {
             // ... tell the animator the player is dead.
             anim.SetTrigger ("PlayerDead");
@@ -68,7 +80,7 @@ public class EnemyAttack : MonoBehaviour
     }
 
 
-    void Attack ()
+    void Attack (PlayerStats playerHealth)
     {
         // Reset the timer.
         timer = 0f;
