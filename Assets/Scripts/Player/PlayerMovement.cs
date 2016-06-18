@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
 				moveHorizontal += 1f;
 			}
 		}
-			
+
 		// Move the player around the scene.
 		Move (moveHorizontal, moveVertical);
 

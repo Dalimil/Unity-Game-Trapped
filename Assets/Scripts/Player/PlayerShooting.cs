@@ -17,7 +17,7 @@ public class PlayerShooting : MonoBehaviour {
 	Light gunLight;                                 // Reference to the light component.
 	public Light faceLight;								// Duh
 	float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-
+	PlayerStats playerStats;
 
 	void Awake ()
 	{
@@ -29,6 +29,7 @@ public class PlayerShooting : MonoBehaviour {
 		gunLine = GetComponent <LineRenderer> ();
 		gunAudio = GetComponent<AudioSource> ();
 		gunLight = GetComponent<Light> ();
+		playerStats = GetComponentInParent<PlayerStats> ();
 		//faceLight = GetComponentInChildren<Light> ();
 	}
 
@@ -39,7 +40,7 @@ public class PlayerShooting : MonoBehaviour {
 		timer += Time.deltaTime;
 
 		// If the Fire1 button is being press and it's time to fire...
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
+		if(playerStats.hasGun && Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
 		{
 			// ... shoot the gun.
 			Shoot ();
