@@ -124,10 +124,10 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 
-	public void RestartLevel ()
-	{
+	//public void RestartLevel ()
+	//{
 		// Reload the level that is currently loaded.
-		SceneManager.LoadScene (0);
-	}
+		// SceneManager.LoadScene (0);
+	//}
 }
 
