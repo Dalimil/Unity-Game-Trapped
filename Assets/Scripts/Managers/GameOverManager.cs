@@ -14,7 +14,7 @@ public class GameOverManager : MonoBehaviour
 
     Animator anim;                          // Reference to the animator component.
 
-	public float restartDelay = 2f;         // Time to wait before restarting the level
+	public float restartDelay = 1f;         // Time to wait before restarting the level
 	float restartTimer = 0f;                     // Timer to count up to restarting the level
 
     void Awake ()
