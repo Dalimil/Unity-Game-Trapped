@@ -7,6 +7,10 @@ TagManager:
   - Player_2
   - Shield_1
   - Shield_2
+  - Gun_1
+  - Gun_2
+  - GunB_1
+  - GunB_2
   layers:
   - Default
   - TransparentFX

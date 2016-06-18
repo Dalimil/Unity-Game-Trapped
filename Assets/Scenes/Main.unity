@@ -308,7 +308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011723231218, guid: c677697f6d04c4284904e729d6b608ce, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c677697f6d04c4284904e729d6b608ce, type: 2}
@@ -489,7 +489,7 @@ GameObject:
   - 137: {fileID: 241553658}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Gun_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1218,6 +1218,10 @@ Prefab:
     - target: {fileID: 470144, guid: 98802d3362549384eb2d215ace35feb7, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 182936, guid: 98802d3362549384eb2d215ace35feb7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 98802d3362549384eb2d215ace35feb7, type: 2}
@@ -3580,6 +3584,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011723231218, guid: c677697f6d04c4284904e729d6b608ce, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c677697f6d04c4284904e729d6b608ce, type: 2}
   m_IsPrefabParent: 0
@@ -3625,11 +3633,11 @@ GameObject:
   - 137: {fileID: 1598755702}
   m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Gun_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1598755701
 Transform:
   m_ObjectHideFlags: 0
@@ -4834,11 +4842,11 @@ GameObject:
   - 108: {fileID: 2007413419}
   m_Layer: 0
   m_Name: GunBarrelEnd
-  m_TagString: Untagged
+  m_TagString: GunB_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2007413418
 Transform:
   m_ObjectHideFlags: 0
@@ -6884,7 +6892,7 @@ GameObject:
   - 108: {fileID: 2095490616}
   m_Layer: 0
   m_Name: GunBarrelEnd
-  m_TagString: Untagged
+  m_TagString: GunB_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

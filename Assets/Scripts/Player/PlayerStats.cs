@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour {
 
@@ -36,16 +35,27 @@ public class PlayerStats : MonoBehaviour {
 
 		// Set the initial health of the player.
 		currentHealth = startingHealth;
-		if (hasBubble) {
-			currentShield = startingShield;
-			if (isPlayerOne) {
-				bubble = GameObject.FindGameObjectWithTag ("Shield_1");
-			} else {
-				bubble = GameObject.FindGameObjectWithTag ("Shield_2");
+		if (isPlayerOne) {
+			bubble = GameObject.FindGameObjectWithTag ("Shield_1");
+			if (!hasGun) {
+				GameObject.FindGameObjectWithTag ("Gun_1").SetActive (false);
+				GameObject.FindGameObjectWithTag ("Gun_1").SetActive (false);
 			}
 		} else {
+			bubble = GameObject.FindGameObjectWithTag ("Shield_2");
+			if (!hasGun) {
+				GameObject.FindGameObjectWithTag ("Gun_2").SetActive (false);
+				GameObject.FindGameObjectWithTag ("GunB_2").SetActive (false);
+			}
+		}
+
+		if (hasBubble) {
+			currentShield = startingShield;
+		} else {
+			bubble.SetActive(false);
 			currentShield = 0;
 		}
+			
 	}
 
 
