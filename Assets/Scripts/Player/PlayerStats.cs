@@ -40,7 +40,7 @@ public class PlayerStats : MonoBehaviour {
 			bubble = GameObject.FindGameObjectWithTag ("Shield_1");
 			if (!hasGun) {
 				GameObject.FindGameObjectWithTag ("Gun_1").SetActive (false);
-				GameObject.FindGameObjectWithTag ("Gun_1").SetActive (false);
+				GameObject.FindGameObjectWithTag ("GunB_1").SetActive (false);
 			}
 		} else {
 			bubble = GameObject.FindGameObjectWithTag ("Shield_2");
@@ -132,6 +132,7 @@ public class PlayerStats : MonoBehaviour {
 		// Turn off the movement and shooting scripts.
 		playerMovement.enabled = false;
 		if(hasGun) playerShooting.enabled = false;
+
 	}
 
 

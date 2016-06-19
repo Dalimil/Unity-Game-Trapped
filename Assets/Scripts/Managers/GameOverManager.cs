@@ -10,6 +10,7 @@ public class GameOverManager : MonoBehaviour
 	GameObject player2;
 	GameObject gun1, gun2, bubble1, bubble2, gunB1, gunB2;
 	GameObject ui1a, ui1b, ui2a, ui2b;
+	GameObject m1a, m1b, m2a, m2b;
     PlayerStats player1Stats;       // Reference to the player's health.
 	PlayerStats player2Stats;
 
@@ -37,12 +38,23 @@ public class GameOverManager : MonoBehaviour
 		ui1b = GameObject.FindGameObjectWithTag ("ui1b");
 		ui2a = GameObject.FindGameObjectWithTag ("ui2a");
 		ui2b = GameObject.FindGameObjectWithTag ("ui2b");
+		m1a = GameObject.FindGameObjectWithTag ("m1a");
+		m1b = GameObject.FindGameObjectWithTag ("m1b");
+		m2a = GameObject.FindGameObjectWithTag ("m2a");
+		m2b = GameObject.FindGameObjectWithTag ("m2b");
+
+		gun1.SetActive (false);
+		gun2.SetActive (false);
 		if(player1Stats.hasGun) {
 			ui2a.SetActive (false);
 			ui1b.SetActive (false);
+			m1b.SetActive (false);
+			m2a.SetActive (false);
 		} else {
 			ui2b.SetActive (false);
 			ui1a.SetActive (false);
+			m1a.SetActive (false);
+			m2b.SetActive (false);
 		}
     }
 
@@ -51,10 +63,19 @@ public class GameOverManager : MonoBehaviour
     {
         // If the player has run out of health...
         if(player1Stats.currentHealth <= 0) {
+			if (player1Alive) {
+				m1a.SetActive (false);
+				m1b.SetActive (false);
+			}
 			player1Alive = false;
 		}
 		if (player2Stats.currentHealth <= 0) {
+			if (player2Alive) {
+				m2a.SetActive (false);
+				m2b.SetActive (false);
+			}
 			player2Alive = false;
+
 		}
 		// print (player1Alive + " " + player2Alive);
 
@@ -127,14 +148,18 @@ public class GameOverManager : MonoBehaviour
 
 		player1Stats.hasGun = a;
 		player2Stats.hasGun = b;
-		gun1.SetActive (a);
+		//gun1.SetActive (a);
 		gunB1.SetActive (a);
-		gun2.SetActive (b);
+		//gun2.SetActive (b);
 		gunB2.SetActive (b);
 		ui1a.SetActive (a);
 		ui1b.SetActive (!a);
 		ui2a.SetActive (b);
 		ui2b.SetActive (!b);
+		m1a.SetActive (a);
+		m1b.SetActive (!a);
+		m2a.SetActive (b);
+		m2b.SetActive (!b);
 	}
 			
 }
