@@ -10,8 +10,8 @@ public class PlayerStats : MonoBehaviour {
 	public float speed = 5f;   // The speed that the player will move at.
 	public int startingShield = 600;
 	public int currentShield;
-	public int startingHealth = 100;                            // The amount of health the player starts the game with.
-	public int currentHealth = 100;                                   // The current health the player has.
+	public int startingHealth = 200;                            // The amount of health the player starts the game with.
+	public int currentHealth = 200;                                   // The current health the player has.
 	public Slider healthSlider;                                 // Reference to the UI's health bar.
 	public Image damageImage;                                   // Reference to an image to flash on the screen on being hurt.
 	public AudioClip deathClip;                                 // The audio clip to play when the player dies.
