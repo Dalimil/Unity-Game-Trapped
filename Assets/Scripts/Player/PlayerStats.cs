@@ -39,13 +39,13 @@ public class PlayerStats : MonoBehaviour {
 		if (isPlayerOne) {
 			bubble = GameObject.FindGameObjectWithTag ("Shield_1");
 			if (!hasGun) {
-				GameObject.FindGameObjectWithTag ("Gun_1").SetActive (false);
+				// GameObject.FindGameObjectWithTag ("Gun_1").SetActive (false);
 				GameObject.FindGameObjectWithTag ("GunB_1").SetActive (false);
 			}
 		} else {
 			bubble = GameObject.FindGameObjectWithTag ("Shield_2");
 			if (!hasGun) {
-				GameObject.FindGameObjectWithTag ("Gun_2").SetActive (false);
+				// GameObject.FindGameObjectWithTag ("Gun_2").SetActive (false);
 				GameObject.FindGameObjectWithTag ("GunB_2").SetActive (false);
 			}
 		}
