@@ -11,6 +11,10 @@ TagManager:
   - Gun_2
   - GunB_1
   - GunB_2
+  - ui1b
+  - ui1a
+  - ui2a
+  - ui2b
   layers:
   - Default
   - TransparentFX

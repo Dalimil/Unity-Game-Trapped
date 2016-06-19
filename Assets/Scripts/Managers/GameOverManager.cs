@@ -9,6 +9,7 @@ public class GameOverManager : MonoBehaviour
 	GameObject player1;
 	GameObject player2;
 	GameObject gun1, gun2, bubble1, bubble2, gunB1, gunB2;
+	GameObject ui1a, ui1b, ui2a, ui2b;
     PlayerStats player1Stats;       // Reference to the player's health.
 	PlayerStats player2Stats;
 
@@ -32,6 +33,17 @@ public class GameOverManager : MonoBehaviour
 		bubble2 = GameObject.FindGameObjectWithTag ("Shield_2");
 		gunB1 = GameObject.FindGameObjectWithTag ("GunB_1");
 		gunB2 = GameObject.FindGameObjectWithTag ("GunB_2");
+		ui1a = GameObject.FindGameObjectWithTag ("ui1a");
+		ui1b = GameObject.FindGameObjectWithTag ("ui1b");
+		ui2a = GameObject.FindGameObjectWithTag ("ui2a");
+		ui2b = GameObject.FindGameObjectWithTag ("ui2b");
+		if(player1Stats.hasGun) {
+			ui2a.SetActive (false);
+			ui1b.SetActive (false);
+		} else {
+			ui2b.SetActive (false);
+			ui1a.SetActive (false);
+		}
     }
 
 
@@ -119,6 +131,10 @@ public class GameOverManager : MonoBehaviour
 		gunB1.SetActive (a);
 		gun2.SetActive (b);
 		gunB2.SetActive (b);
+		ui1a.SetActive (a);
+		ui1b.SetActive (!a);
+		ui2a.SetActive (b);
+		ui2b.SetActive (!b);
 	}
 			
 }
